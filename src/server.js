@@ -30,15 +30,18 @@ app.get('/test', (req, res) => {
     res.send('Routes are working');
 });
 
-// Fetch stock data from the Finnnhub API
-app.get('/stock', (req, res) => {
+// Fetch stock data from the Finnnhub API based on user stock ticker input
+app.post('/stock', (req, res) => {
+    const stock_ticker = req.body.stock_id.toUpperCase();
+    console.log('User input is ', stock_ticker);
+    
     const api_key = finnhub.ApiClient.instance.authentications['api_key'];
     api_key.apiKey = process.env.API // Replace this
     const finnhubClient = new finnhub.DefaultApi()
     
     // Stock candles
-    finnhubClient.stockCandles("MSFT", "D", 1590988249, 1591852249, {}, (error, data, response) => {
-        console.log(data)
+    finnhubClient.stockCandles(stock_ticker, "D", 1590988249, 1591852249, {}, (error, data, response) => {
+        res.send(data);
     });
 });
 
