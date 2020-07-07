@@ -12,13 +12,22 @@
     <h3>Search for Stock Ticker</h3>
 
     <div>
-        <form id="user-input" method="POST" action="/stock">
+        <form id="user-input" method="POST" action="/">
             <input type="text" placeholder="Enter Stock" name="stock_id">
             <button>Submit</button>
         </form>
     </div>
-
-
+    <h3>Stock Information</h3>
+    <p>
+        <%= data.name %></br>
+        <%= data.country %></br>
+        <%= data.ipo %></br>
+        
+        
+    
+    </p>
+    
+    
     <script src="/client/js/script.js"></script> 
 </body>
 </html>
