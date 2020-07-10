@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="/client/styles/style.css" media="screen"/>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
     <link>
     <title>MyStocks</title>
 </head>
@@ -19,13 +20,29 @@
     </div>
     <h3>Stock Information</h3>
     <p>
-        <%= data.name %></br>
+       <div id="label"><%= data.name %></div> </br>
         <%= data.country %></br>
         <%= data.ipo %></br>
-        
-        
-    
+        <%= data.finnhubIndustry %></br>
+        <a href=<%= data.weburl %>><%= data.weburl %></a>
     </p>
+
+    <div>
+        <label>Chart-Type</label>
+            <select id = "chart-type" onclick="updateChartType()" value="line">
+              <option value = "bar">bar</option>
+              <option value = "line">line</option>
+            </select>
+    </div>
+
+
+    
+    <canvas id="myChart"></canvas><br/>
+   
+    <button onclick="updateChartData()">Update</button>
+    
+    
+
     
     
     <script src="/client/js/script.js"></script> 

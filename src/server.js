@@ -29,38 +29,58 @@ app.listen(5000, () => {
 }); */
 
 // Empty object defined to store the API data received with the post request
+// This get request gets executed whenever the page gets refreshed
 app.get('/', (req, res) => {  
-    let data = {name: "", country: "", ipo: ""};
+    let data = {name: "", country: "", ipo: "", finnhubindustry: "", weburl: ""};
     res.render('index.ejs', {data});
 });
 
-// Fetch stock data from the Finnnhub API based on user stock ticker input
+// Get stock data from the Finnnhub API based on user stock ticker input
 app.post('/', (req, res) => {
     const stock_ticker = req.body.stock_id.toUpperCase();
     console.log('User input is ', stock_ticker);
-    
-    
-    const api_key = finnhub.ApiClient.instance.authentications['api_key'];
-    api_key.apiKey = process.env.API; // Replace this
-    const finnhubClient = new finnhub.DefaultApi();
+     
+// Finnhub API
+const api_key = finnhub.ApiClient.instance.authentications['api_key'];
+api_key.apiKey = process.env.API; 
+const finnhubClient = new finnhub.DefaultApi();
 
+// Stock candles
+/*   let timeframe = ['1', '5', '15', '30', '60', 'D', 'W', 'M'];
+finnhubClient.stockCandles(stock_ticker, timeframe[6], 1590988249, 1591852249, {}, (error, data, response) => {
+    res.send(data);
+}); */  
 
-    /* // Stock candles
-    finnhubClient.stockCandles(stock_ticker, "D", 1590988249, 1591852249, {}, (error, data, response) => {
-        res.send(data);
-    }); */ 
+// Store all data received from finnhub API in an array
+let finalResult = [];
 
-    // API data is send back to the client
-    finnhubClient.companyProfile2({'symbol': stock_ticker}, (error, data, response) => {  
-        console.log(data); 
-        res.render('index.ejs', {data});
-    });  
-    
-    
-   
-});
+let companyProfile = () => {
+    let promise = new Promise((res, rej) => {
+        finnhubClient.companyProfile2({'symbol': stock_ticker}, (error, data, response) => {  
+            console.log(data); 
+            /* res.render('index.ejs', {data}); */
+            res(finalResult.push(data));
+        })
+    });
+    return promise;
+};
 
+let stockQuote = () => {
+    let promise = new Promise((res, rej) => {
+        finnhubClient.quote("AAPL", (error, data, response) => {
+            res(finalResult.push(data));
+        }); 
+    });
+    return promise;
+};    
 
-
+let sendToClient = () => {
+    res.send(finalResult);
+};  
  
+companyProfile()
+    .then(stockQuote)
+    .then(sendToClient);
+   
+}); 
 
