@@ -44,18 +44,13 @@
             </select>
     </div>
 
-    <div class="chartData">
-       
-        
-            
-            <script>
-                let stockValues = <%= JSON.stringify(finalResult[4]) %>   
-                let stockTimeframe = <%= JSON.stringify(finalResult[3]) %>   
-
-            </script>
-        
-        
-        </div> <!-- finalResult[4] -->
+    <!-- Rendered data from server is stored in client variable for displaying it with chart.js -->
+    <div class="chartData">     
+        <script>
+            let stockValues = <%= JSON.stringify(finalResult[4]) %>   
+            let stockTimeframe = <%= JSON.stringify(finalResult[3]) %>   
+        </script>  
+    </div> 
 
     
     <canvas id="myChart"></canvas><br/>

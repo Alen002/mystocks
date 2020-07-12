@@ -106,7 +106,7 @@ let stockCandles = () => {
     console.log(dateTimestamp);
     let promise = new Promise((res, rej) => {
         let timeframe = ['1', '5', '15', '30', '60', 'D', 'W', 'M'];
-        finnhubClient.stockCandles(stock_ticker, timeframe[7],1577836800, dateTimestamp , {}, (error, data, response) => {
+        finnhubClient.stockCandles(stock_ticker, timeframe[6],1577836800, dateTimestamp , {}, (error, data, response) => {
             res(finalResult.push(data.t, data.c));
         });
         //1594339200

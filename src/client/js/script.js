@@ -8,19 +8,23 @@ const chartType = () => {
 };
 
 var ctx = document.getElementById('myChart').getContext('2d');
+Chart.defaults.scale.gridLines.drawOnChartArea = false;
 
 var chart = new Chart(ctx, {
+    
     // The type of chart we want to create
     type: 'line',
 
     // The data for our dataset
     data: {
-        labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+        labels: [],
         datasets: [{
             label: 'My First dataset',
             backgroundColor: 'rgb(255, 99, 132)',
-            borderColor: 'rgb(255, 99, 132)',
-            data: [0, 10, 5, 2, 20, 30, 45],
+            borderColor: 'rgb(0, 91, 182)',
+            data: [],
+            fill: false,
+            lineTension: 0
         }]
     },
 
@@ -30,24 +34,23 @@ var chart = new Chart(ctx, {
 
 
 function updateChartData() {
-    /* let datas = document.querySelector('.chartData').innerHTML; */
+    //stockValues and stockTimeframe values received from index.ejs template
     console.log(stockValues);
     console.log(stockTimeframe);
+    let stockDates = [];
+    
+    stockTimeframe.forEach((index) => {
+        stockDates.push(new Date(index*1000).toLocaleDateString("en-US"));
+    });
+    
     chart.data.datasets[0].data = stockValues;
-    chart.data.labels = stockTimeframe;
+    chart.data.labels = stockDates;
     
     chart.update();
 };
 
-
-
-
-
-
-
-
 function updateChartType() {
-    chart.type = 'line'; /* document.getElementById('chart-type').value; */
+    chart.type = 'line'; 
     chart.update();
     console.log(chart.type)
 };
