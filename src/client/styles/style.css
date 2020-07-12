@@ -9,6 +9,9 @@
 body {
     padding-top: 10px;
     margin-left: 5px;
+    padding: 0.5em;
+    margin-top: 0;
+    color: rgb(61, 62, 75);
 }
 
 .header {
@@ -16,13 +19,16 @@ body {
     padding-bottom: 20px;
     position: fixed;
     width: 100%;
-
+    z-index: 1;
+    margin-top: -10px;
 }
 
+/**** Buttons and Input ****/
 input {
     border: solid 1px lightblue;
     border-radius: 5px;
     padding: 3px;
+    color: red
 }
 
 input:hover {
@@ -35,10 +41,23 @@ canvas{
     border-style: solid black;
 }
 
+.btn {
+    background-color: rgb(210, 224,246);
+    color: black;
+    border-color: white;
+}
+
+.btn:hover {
+    background-color: rgb(39, 118, 189);
+}
+
+.form-control {
+
+}
+
+
 /* Data for the chart is hidden */
 .chartData {
     
     color: red;
 }
-
-

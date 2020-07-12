@@ -14,12 +14,12 @@
     <div class="header">
         <h3>Search for Stock Ticker</h3>
         <form id="user-input" method="POST" action="/">
-            <input type="text" placeholder="Enter Ticker, eg. AAPL" name="stock_id">
-            <button>Submit</button>
+            <input type="text" class="form-control" placeholder="Enter Ticker, eg. AAPL" name="stock_id">
+            <input class="btn btn-primary" type="submit">
         </form>
     </div>
     
-    
+    <!-- General stock data is rendered here-->
     <div id="label">
         <p>
             <h2><%= finalResult[0].name %> (<%= finalResult[0].ticker %>)</h2>
@@ -35,34 +35,27 @@
             </p>
     </div>
 
-
-    <div>
-        <label>Chart-Type</label>
-            <select id = "chart-type" onclick="updateChartType()" value="line">
-              <option value = "bar">bar</option>
-              <option value = "line">line</option>
-            </select>
-    </div>
-
-    <!-- Rendered data from server is stored in client variable for displaying it with chart.js -->
+    <!-- Rendered data from server is stored in a client variable for displaying it with chart.js -->
     <div class="chartData">     
         <script>
             let stockValues = <%= JSON.stringify(finalResult[4]) %>   
             let stockTimeframe = <%= JSON.stringify(finalResult[3]) %>   
         </script>  
     </div> 
-
+    <!-- Different time frames (day, week, month) can be selected for the chart -->
     <div class="btn-group">
         <button type="button" class="btn btn-info">Day</button>
         <button type="button" class="btn btn-info">Week</button> 
         <button type="button" class="btn btn-info">Month</button>
     </div>
+    <!-- Chart.js is used for the stock chart -->
     <canvas id="myChart"></canvas><br/>
-   
     <button onclick="updateChartData()">Update</button>
     
+    <!-- Footer -->
     <footer>Alen Klaric&copy;</footer>
 
+    <!-- Bootstrap script -->
     <script src="/client/js/script.js"></script> 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
