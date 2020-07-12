@@ -7,9 +7,16 @@
 }  
 
 body {
-    background-color: lightblue;
     padding-top: 10px;
     margin-left: 5px;
+}
+
+.header {
+    background-color: #F9F9FA;
+    padding-bottom: 20px;
+    position: fixed;
+    width: 100%;
+
 }
 
 input {
@@ -24,9 +31,8 @@ input:hover {
 }
 
 canvas{
-    
-    background-color: white; 
     border-radius: 5px;
+    border-style: solid black;
 }
 
 /* Data for the chart is hidden */
