@@ -25,7 +25,7 @@
             <h2><%= finalResult[0].name %> (<%= finalResult[0].ticker %>)</h2>
             Currency in <%= finalResult[0].currency %>
             <h2><%= finalResult[1].c %></h2>
-                <%= (finalResult[1].c - finalResult[1].pc).toFixed(2) %>  (<%=((finalResult[1].c/finalResult[1].pc - 1)*100).toFixed(2)%>%)</br>
+            <p><%= (finalResult[1].c - finalResult[1].pc).toFixed(2) %>  (<%=((finalResult[1].c/finalResult[1].pc - 1)*100).toFixed(2)%>%)</p>
             </br>
             <p>
                 Country: <%= finalResult[0].country %></br>
@@ -44,6 +44,18 @@
             </select>
     </div>
 
+    <div class="chartData">
+       
+        
+            
+            <script>
+                let stockValues = <%= JSON.stringify(finalResult[4]) %>   
+                let stockTimeframe = <%= JSON.stringify(finalResult[3]) %>   
+
+            </script>
+        
+        
+        </div> <!-- finalResult[4] -->
 
     
     <canvas id="myChart"></canvas><br/>

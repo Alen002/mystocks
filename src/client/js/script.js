@@ -11,7 +11,7 @@ var ctx = document.getElementById('myChart').getContext('2d');
 
 var chart = new Chart(ctx, {
     // The type of chart we want to create
-    type: 'bar',
+    type: 'line',
 
     // The data for our dataset
     data: {
@@ -28,12 +28,20 @@ var chart = new Chart(ctx, {
     options: {}
 });
 
+
 function updateChartData() {
-    chart.data.datasets[0].data = test;
+    /* let datas = document.querySelector('.chartData').innerHTML; */
+    console.log(stockValues);
+    console.log(stockTimeframe);
+    chart.data.datasets[0].data = stockValues;
+    chart.data.labels = stockTimeframe;
+    
     chart.update();
 };
 
-let test = [100, 150, 100, 200];
+
+
+
 
 
 

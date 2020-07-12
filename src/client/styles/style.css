@@ -27,4 +27,12 @@ canvas{
     
     background-color: white; 
     border-radius: 5px;
-  }
+}
+
+/* Data for the chart is hidden */
+.chartData {
+    
+    color: red;
+}
+
+

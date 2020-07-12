@@ -156,6 +156,8 @@ let stockEarnings= () => {
 
 // Data send to the client after all promises are resolved
 let sendToClient = () => {
+    console.log(finalResult);
+    test = 'hello'
     res.render('index.ejs', {finalResult})
     /* res.send(finalResult);  */
 };  
