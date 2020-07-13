@@ -60,3 +60,7 @@ canvas{
     
     color: red;
 }
+
+#hide {
+    visibility: hidden;
+}

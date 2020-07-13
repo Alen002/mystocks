@@ -1,5 +1,12 @@
 console.log('js is working');
 
+// Update chart.js after everything has been loaded
+window.onload = () => {
+    updateChartData(0, 1)
+    document.getElementById('hide').style.visibility = "visible";
+    
+};
+
 // user selection of chart type is stored in chartStyle variable
 const chartType = () => {
     let chartStyle = document.getElementById('chart-type').value;  
@@ -32,23 +39,7 @@ var chart = new Chart(ctx, {
     options: {}
 });
 
-/* 
-function updateChartData() {
-    //stockValues and stockTimeframe values received from index.ejs template
-    console.log(stockValues);
-    console.log(stockTimeframe);
-    let stockDates = [];
-    
-    stockTimeframe.forEach((index) => {
-        stockDates.push(new Date(index*1000).toLocaleDateString("en-US"));
-    });
-    
-    chart.data.datasets[0].data = stockValues;
-    chart.data.labels = stockDates;
-    
-    chart.update();
-}; */
-
+// Change chart data and timeframe when user clicks on day/week/month
 function updateChartData(indexLabels, indexData) {
     
     chart.data.labels = stockData[indexLabels];
@@ -58,16 +49,3 @@ function updateChartData(indexLabels, indexData) {
     chart.update();
 };
 
-
-
-
-
-
-
-
-
-
-// Update chart.js after everything has been loaded
-window.onload = () => {
-    updateChartData(0, 1)
-};
