@@ -49,9 +49,7 @@ function updateChartData() {
     chart.update();
 };
 
-function updateChartType() {
-    chart.type = 'line'; 
-    chart.update();
-    console.log(chart.type)
+// Update chart.js after everything has been loaded
+window.onload = () => {
+    updateChartData()
 };
-

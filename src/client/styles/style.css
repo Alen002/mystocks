@@ -24,11 +24,10 @@ body {
 }
 
 /**** Buttons and Input ****/
-input {
-    border: solid 1px lightblue;
-    border-radius: 5px;
-    padding: 3px;
-    color: red
+.form-control {
+    width: 200px;
+    height: 24px;
+    font-size: 20px;
 }
 
 input:hover {

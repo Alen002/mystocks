@@ -10,16 +10,34 @@
     <title>MyStocks</title>
 </head>
 <body>
+    <!-- Main header -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
 
-    <div class="header">
-        <h3>Search for Stock Ticker</h3>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div class="navbar-nav">
+            <a class="nav-item nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+            <a class="nav-item nav-link" href="#">Financials</a>
+            <a class="nav-item nav-link" href="#">Analysts</a>
+            <a class="nav-item nav-link" href="#">News</a>
+          </div>
+        </div>
+    </nav>
+
+    <!-- Input field to enter stock ticker, eg. AAPL, MSFT, AMZN etc. -->
+    <div class="form-inline">  <!-- input-group-->
         <form id="user-input" method="POST" action="/">
-            <input type="text" class="form-control" placeholder="Enter Ticker, eg. AAPL" name="stock_id">
-            <input class="btn btn-primary" type="submit">
+            <input type="text" class="form-control mb-2" placeholder="Enter Ticker, eg. AAPL" name="stock_id">
+       
+            <span class="input-group-btn">
+                <button type="submit" class="btn btn-primary mb-2">Submit</button>
+            </span>
         </form>
     </div>
     
-    <!-- General stock data is rendered here-->
+    <!-- General stock data is rendered here -->
     <div id="label">
         <p>
             <h2><%= finalResult[0].name %> (<%= finalResult[0].ticker %>)</h2>
@@ -48,15 +66,16 @@
         <button type="button" class="btn btn-info">Week</button> 
         <button type="button" class="btn btn-info">Month</button>
     </div>
+
     <!-- Chart.js is used for the stock chart -->
     <canvas id="myChart"></canvas><br/>
-    <button onclick="updateChartData()">Update</button>
+    
     
     <!-- Footer -->
     <footer>Alen Klaric&copy;</footer>
 
-    <!-- Bootstrap script -->
     <script src="/client/js/script.js"></script> 
+    <!-- Bootstrap -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
