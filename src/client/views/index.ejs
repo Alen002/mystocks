@@ -10,9 +10,9 @@
     <title>MyStocks</title>
 </head>
 <body>
-    <!-- Main header -->
+    <!-- Main header ml-auto -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
 
@@ -56,15 +56,38 @@
     <!-- Rendered data from server is stored in a client variable for displaying it with chart.js -->
     <div class="chartData">     
         <script>
-            let stockValues = <%= JSON.stringify(finalResult[4]) %>   
-            let stockTimeframe = <%= JSON.stringify(finalResult[3]) %>   
+            // Stock data sets received from the server request are stored here
+            let stockData = [[], [], [], [], [], []];
+            
+            // Daily Stock data
+            let timeframeOne = <%= JSON.stringify(finalResult[3]) %>
+            timeframeOne.forEach((index) => {
+                stockData[0].push(new Date(index*1000).toLocaleDateString("en-US"));
+            });
+            stockData[1] = <%= JSON.stringify(finalResult[4]) %>  
+
+            // Weekly Stock data
+            let timeframeTwo = <%= JSON.stringify(finalResult[5]) %>
+            timeframeTwo.forEach((index) => {
+                stockData[2].push(new Date(index*1000).toLocaleDateString("en-US"));
+            });
+            stockData[3] = <%= JSON.stringify(finalResult[6]) %> 
+
+            // Monthly Stock data
+            let timeframeThree = <%= JSON.stringify(finalResult[7]) %>
+            timeframeThree.forEach((index) => {
+                stockData[4].push(new Date(index*1000).toLocaleDateString("en-US"));
+            });
+            stockData[5] = <%= JSON.stringify(finalResult[8]) %> 
+
+            console.log(stockData);
         </script>  
     </div> 
     <!-- Different time frames (day, week, month) can be selected for the chart -->
     <div class="btn-group">
-        <button type="button" class="btn btn-info">Day</button>
-        <button type="button" class="btn btn-info">Week</button> 
-        <button type="button" class="btn btn-info">Month</button>
+        <button type="button" class="btn btn-info" onclick="updateChartData(0, 1)">Day</button>
+        <button type="button" class="btn btn-info" onclick="updateChartData(2, 3)">Week</button> 
+        <button type="button" class="btn btn-info" onclick="updateChartData(4, 5)">Month</button>
     </div>
 
     <!-- Chart.js is used for the stock chart -->

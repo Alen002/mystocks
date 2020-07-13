@@ -32,7 +32,7 @@ var chart = new Chart(ctx, {
     options: {}
 });
 
-
+/* 
 function updateChartData() {
     //stockValues and stockTimeframe values received from index.ejs template
     console.log(stockValues);
@@ -47,9 +47,27 @@ function updateChartData() {
     chart.data.labels = stockDates;
     
     chart.update();
+}; */
+
+function updateChartData(indexLabels, indexData) {
+    
+    chart.data.labels = stockData[indexLabels];
+    chart.data.datasets[0].data = stockData[indexData];
+    
+    
+    chart.update();
 };
+
+
+
+
+
+
+
+
+
 
 // Update chart.js after everything has been loaded
 window.onload = () => {
-    updateChartData()
+    updateChartData(0, 1)
 };
