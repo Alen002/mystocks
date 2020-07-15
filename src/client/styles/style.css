@@ -50,11 +50,6 @@ canvas{
     background-color: rgb(39, 118, 189);
 }
 
-.form-control {
-
-}
-
-
 /* Data for the chart is hidden */
 .chartData {
     
@@ -64,3 +59,4 @@ canvas{
 #hide {
     visibility: hidden;
 }
+
