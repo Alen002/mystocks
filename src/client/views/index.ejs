@@ -51,11 +51,11 @@
                             Currency in <%= finalResult[0].currency %>
                             <h2><%= finalResult[1].c %></h2>
                             <p><%= (finalResult[1].c - finalResult[1].pc).toFixed(2) %>  (<%=((finalResult[1].c/finalResult[1].pc - 1)*100).toFixed(2)%>%)</p>
-                            </br>
                             <p>
                                 Country: <%= finalResult[0].country %></br>
-                                Established: <%= finalResult[0].ipo %></br>
                                 Industry: <%= finalResult[0].finnhubIndustry %></br>
+                                Market Cap: <%= Math.floor(finalResult[0].marketCapitalization/10)/100 %>B</br>
+                                Share Outstand: <%= Math.floor(finalResult[0].shareOutstanding/10)/100 %>B</br>
                                 <a href=<%= finalResult[0].weburl %>><%= finalResult[0].weburl %></a>
                             </p>
                         </p>
@@ -108,6 +108,9 @@
             });
             stockData[5] = <%= JSON.stringify(finalResult[8]) %> 
             console.log(stockData);
+
+            /* ipoDate = <%= finalResult[0].ipo %>
+            let dateResult = ipoDate.toISOString().slice(0, 10) */
         </script>  
     </div> 
 

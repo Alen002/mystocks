@@ -1,5 +1,4 @@
 console.log('js is working');
-
 // Update chart.js after everything has been loaded
 window.onload = () => {
     updateChartData(0, 1)

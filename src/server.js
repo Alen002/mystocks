@@ -31,21 +31,8 @@ app.listen(5000, () => {
 // Empty object defined to store the API data received with the post request
 // This get request gets executed whenever the page gets refreshed
 app.get('/', (req, res) => {  
-    /* let data = {name: "", country: "", ipo: "", finnhubindustry: "", weburl: ""};
-    res.render('index.ejs', {data}); */
-    let finalResult = [];
-    finalResult.push({
-        name: "", 
-        country: "", 
-        ipo: "", 
-        finnhubindustry: "", 
-        weburl: "", 
-        ticker: "", 
-        currency: ""
-    },
-    {
-        c: ""    
-    });
+    let finalResult = [{}, {}];
+   
 
     res.render('index.ejs', {finalResult});
 
