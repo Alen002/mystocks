@@ -56,7 +56,7 @@ canvas{
     color: red;
 }
 
-#hide {
+.hide {
     visibility: hidden;
 }
 

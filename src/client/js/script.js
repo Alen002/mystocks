@@ -3,8 +3,8 @@ console.log('js is working');
 // Update chart.js after everything has been loaded
 window.onload = () => {
     updateChartData(0, 1)
-    document.getElementById('hide').style.visibility = "visible";
-    
+    document.getElementsByClassName('hide')[0].style.visibility = "visible";
+    document.getElementsByClassName('hide')[1].style.visibility = "visible";    
 };
 
 // user selection of chart type is stored in chartStyle variable

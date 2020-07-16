@@ -30,7 +30,7 @@
     <!-- Stock data and Chart-->
     <div class="container-fluid">
 
-        <div class="row">
+        <div class="row"><!-- Start of row -->
 
             <div class="col-10 col-sm-11 col-xl-3">
                 <!-- Input form to enter stock data -->
@@ -45,26 +45,25 @@
                 </div>
 
                <!-- Stock data is rendered -->
-                <div id="label">
-                    <p>
-                        <h2><%= finalResult[0].name %> (<%= finalResult[0].ticker %>)</h2>
-                        Currency in <%= finalResult[0].currency %>
-                        <h2><%= finalResult[1].c %></h2>
-                        <p><%= (finalResult[1].c - finalResult[1].pc).toFixed(2) %>  (<%=((finalResult[1].c/finalResult[1].pc - 1)*100).toFixed(2)%>%)</p>
-                        </br>
+                    <div id="label" class="hide">
                         <p>
-                            Country: <%= finalResult[0].country %></br>
-                            Established: <%= finalResult[0].ipo %></br>
-                            Industry: <%= finalResult[0].finnhubIndustry %></br>
-                            <a href=<%= finalResult[0].weburl %>><%= finalResult[0].weburl %></a>
+                            <h2><%= finalResult[0].name %> (<%= finalResult[0].ticker %>)</h2>
+                            Currency in <%= finalResult[0].currency %>
+                            <h2><%= finalResult[1].c %></h2>
+                            <p><%= (finalResult[1].c - finalResult[1].pc).toFixed(2) %>  (<%=((finalResult[1].c/finalResult[1].pc - 1)*100).toFixed(2)%>%)</p>
+                            </br>
+                            <p>
+                                Country: <%= finalResult[0].country %></br>
+                                Established: <%= finalResult[0].ipo %></br>
+                                Industry: <%= finalResult[0].finnhubIndustry %></br>
+                                <a href=<%= finalResult[0].weburl %>><%= finalResult[0].weburl %></a>
+                            </p>
                         </p>
-                    </p>
-                </div>
-
+                    </div>  
             </div>
             
-            <!-- Chart buttons and chart-->    
-            <div class="col-10 col-sm-11 col-xl-8">    
+            <!-- Chart buttons and chart display -->    
+            <div class="col-10 col-sm-11 col-xl-8 hide">    
                 <div class="btn-group">
                     <button type="button" class="btn btn-info" onclick="updateChartData(0, 1)">Day</button>
                     <button type="button" class="btn btn-info" onclick="updateChartData(2, 3)">Week</button> 
@@ -74,7 +73,7 @@
                 <canvas id="myChart"></canvas><br/>
             </div>
 
-        </div>
+        </div><!-- /End of row -->
 
     </div>
     <!-- /End of stock data and chart-->
