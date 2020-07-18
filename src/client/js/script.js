@@ -25,7 +25,7 @@ var chart = new Chart(ctx, {
     data: {
         labels: [],
         datasets: [{
-            label: 'My First dataset',
+            label: 'Stock Prices',
             backgroundColor: 'rgb(255, 99, 132)',
             borderColor: 'rgb(0, 91, 182)',
             data: [],

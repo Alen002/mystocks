@@ -23,7 +23,14 @@ body {
     margin-top: -10px;
 }
 
+footer {
+    background-color: #F9F9FA;
+    padding: 10px;
+    text-align: center;
+}
 /**** Buttons and Input ****/
+
+/* input form for entering stock data */
 .form-control {
     width: 200px;
     height: 24px;
@@ -33,11 +40,6 @@ body {
 input:hover {
     border: solid 1px;
     border-color: #39A6FF;
-}
-
-canvas{
-    border-radius: 5px;
-    border-style: solid black;
 }
 
 .btn {
@@ -50,13 +52,12 @@ canvas{
     background-color: rgb(39, 118, 189);
 }
 
-/* Data for the chart is hidden */
-.chartData {
-    
-    color: red;
-}
-
 .hide {
     visibility: hidden;
 }
 
+/* chart.js */
+canvas {
+    border-radius: 5px;
+    border-style: solid black;
+}
