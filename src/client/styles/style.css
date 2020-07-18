@@ -14,15 +14,6 @@ body {
     color: rgb(61, 62, 75);
 }
 
-.header {
-    background-color: #F9F9FA;
-    padding-bottom: 20px;
-    position: fixed;
-    width: 100%;
-    z-index: 1;
-    margin-top: -10px;
-}
-
 footer {
     background-color: #F9F9FA;
     padding: 10px;

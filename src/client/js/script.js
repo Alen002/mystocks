@@ -35,7 +35,7 @@ var chart = new Chart(ctx, {
     },
 
     // Configuration options go here
-    options: {}
+    options: {maintainAspectRatio: true}
 });
 
 // Change chart data and timeframe when user clicks on day/week/month
