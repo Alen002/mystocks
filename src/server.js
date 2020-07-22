@@ -38,7 +38,11 @@ app.get('/', (req, res) => {
 
 app.get('/news', (req, res) => { 
     // Store news data received from finnhub API in an array
-    compNews = [];
+    compNews = [[]];
+    for (i = 0; i < 10; i++) {
+        compNews[0].push({});
+    }
+    console.log(compNews);
     res.render('news.ejs', {compNews});
 });
 
@@ -46,6 +50,9 @@ app.get('/news', (req, res) => {
 app.post('/news', (req, res) => { 
     const stock_ticker = req.body.stock_id.toUpperCase();
     console.log('User input is ', stock_ticker);
+
+    // Store all data received from finnhub API in an array
+    let compNews = [];
     
     // convert date 
     let currentDate = new Date().toJSON().slice(0,10)
@@ -55,7 +62,7 @@ app.post('/news', (req, res) => {
     let companyNews = () => {
         let promise = new Promise((res, rej) => {
             finnhubClient.companyNews(stock_ticker, "2020-01-01", currentDate, (error, data, response) => {  
-                console.log(data); 
+                console.log('server: ', data); 
                 res(compNews.push(data));
             })
         });
@@ -63,9 +70,9 @@ app.post('/news', (req, res) => {
     };
    
     let sendToClient = () => {
-        console.log(compNews);
-        res.send({compNews});
-        /* res.render('news.ejs', {compNews}); */
+        console.log('The following news: ',compNews);
+        /* res.send({compNews}); */
+        res.render('news.ejs', {compNews});
     }; 
 
     companyNews()
@@ -210,8 +217,7 @@ app.post('/', (req, res) => {
 
     // Data send to the client after all promises are resolved
     let sendToClient = () => {
-        console.log(finalResult);
-        test = 'hello'
+        console.log('client: ', finalResult);
         res.render('index.ejs', {finalResult})
         /* res.send(finalResult);  */
     };  

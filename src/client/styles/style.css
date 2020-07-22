@@ -19,6 +19,13 @@ footer {
     text-align: center;
 }
 
+a {
+    background-color: none;
+    text-decoration: none;
+    color: rgb(61, 62, 75);
+}
+
+
 /**** Buttons and Input ****/
 
 /* input form for entering stock data */
