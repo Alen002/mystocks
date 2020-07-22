@@ -42,21 +42,21 @@
                 </div>
 
                
-                    <h3>Current News</h3>
+                <h3>Current News</h3>
                 
-                   <% for (let a = 0; a < 10; a++ ) { %>
-                        <div class="news">
-                            <p>
-                                <a href="<%= compNews[0][a].url %>">
-                                    <img src="<%= compNews[0][a].image%>">
-                                    <%= compNews[0][a].datetime %></br>
-                                    <h4><%= compNews[0][a].headline %></h4></br>
-                                    <%= compNews[0][a].summary %></br>
-                                    <%= compNews[0][a].url %>"></br>
-                                </a>
-                            </p>
-                        </div>
-                   <% } %>
+                <% for (let a = 0; a < 10; a++ ) { %>
+                     <div class="news">
+                         <p>
+                             <a href="<%= compNews[0][a].url %>">
+                                 <img src="<%= compNews[0][a].image%>">
+                                 <%= compNews[0][a].datetime %></br>
+                                 <h4><%= compNews[0][a].headline %></h4></br>
+                                 <%= compNews[0][a].summary %></br>
+                                 <%= compNews[0][a].url %>"></br>
+                             </a>
+                         </p>
+                     </div>
+                <% } %>
                    
    
             </div>                 
