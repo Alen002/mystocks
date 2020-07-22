@@ -25,6 +25,31 @@ a {
     color: rgb(61, 62, 75);
 }
 
+.news-article {
+    max-width: 95%;
+}
+
+.news {
+    display: flex;
+    padding: 5px;
+    flex-direction: row;
+}
+
+a {
+    text-decoration: none !important;
+}
+
+.news-content {
+    padding-left: 10px;
+}
+
+img {
+    min-width: 20rem;
+    max-width: 20rem;
+    height: 15rem;
+    border-radius: 10px;  
+    object-fit: cover;
+}
 
 /**** Buttons and Input ****/
 
@@ -59,3 +84,20 @@ canvas {
     border-radius: 5px;
     border-style: solid black;
 }
+
+/**** Media-Queries ****/
+
+/* For news.ejs view */
+@media(max-width: 767px) {
+    .news {
+        flex-direction: column;
+    }
+    img {      
+        min-width: 100%;
+        width: 40%; /* for height see blog */
+        
+        object-fit: cover; /* crops the image */
+}
+}
+
+ 
