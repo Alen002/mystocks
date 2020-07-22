@@ -24,24 +24,53 @@ app.listen(5000, () => {
     console.log('Example app listening on port 5000!');
 });
 
-/* app.get('/', (req, res) => {    
-    res.sendFile('/client/views/index.html', { root: __dirname});  
-}); */
-
-// Empty object defined to store the API data received with the post request
-// This get request gets executed whenever the page gets refreshed
-app.get('/', (req, res) => {  
-    let finalResult = [{}, {}];
-   
-
-    res.render('index.ejs', {finalResult});
-
-});
-
 /* Global Variables - Finnhub API */
 const api_key = finnhub.ApiClient.instance.authentications['api_key'];
 api_key.apiKey = process.env.API; 
 const finnhubClient = new finnhub.DefaultApi();
+
+// Empty object defined to store the API data received with the post request
+// This get request gets executed whenever the page gets refreshed
+app.get('/', (req, res) => {  
+    finalResult = [{}, {}];    
+    res.render('index.ejs', {finalResult});
+});
+
+app.get('/news', (req, res) => { 
+    // Store news data received from finnhub API in an array
+    compNews = [];
+    res.render('news.ejs', {compNews});
+});
+
+// Receive related news data for a stock based on the stock ticker entered by the user
+app.post('/news', (req, res) => { 
+    const stock_ticker = req.body.stock_id.toUpperCase();
+    console.log('User input is ', stock_ticker);
+    
+    // convert date 
+    let currentDate = new Date().toJSON().slice(0,10)
+    console.log(currentDate);
+  
+    // News data from finnhub
+    let companyNews = () => {
+        let promise = new Promise((res, rej) => {
+            finnhubClient.companyNews(stock_ticker, "2020-01-01", currentDate, (error, data, response) => {  
+                console.log(data); 
+                res(compNews.push(data));
+            })
+        });
+        return promise;
+    };
+   
+    let sendToClient = () => {
+        console.log(compNews);
+        res.send({compNews});
+        /* res.render('news.ejs', {compNews}); */
+    }; 
+
+    companyNews()
+        .then(sendToClient);    
+});
 
 
 
@@ -49,8 +78,6 @@ const finnhubClient = new finnhub.DefaultApi();
 app.post('/', (req, res) => {
         const stock_ticker = req.body.stock_id.toUpperCase();
         console.log('User input is ', stock_ticker);
-
-    
 
     // Store all data received from finnhub API in an array
     let finalResult = [];
@@ -97,7 +124,7 @@ app.post('/', (req, res) => {
         console.log(dateTimestamp);
         let promise = new Promise((res, rej) => {
             //let timeframe = ['1', '5', '15', '30', '60', 'D', 'W', 'M'];
-            finnhubClient.stockCandles(stock_ticker, 'D',1577836800, dateTimestamp , {}, (error, data, response) => {
+            finnhubClient.stockCandles(stock_ticker, 'D', 1577836800, dateTimestamp , {}, (error, data, response) => {
                 res(finalResult.push(data.t, data.c)); 
             });
             //1594339200
