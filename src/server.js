@@ -73,7 +73,9 @@ app.post('/news', (req, res) => {
     let sendToClient = () => {
         console.log('The following news: ',compNews);
         /* res.send({compNews}); */
-        res.render('news.ejs', {compNews});
+        if (Object.getOwnPropertyNames(compNews[0][0]).length != 0) {
+            res.render('news.ejs', {compNews});
+        }
     }; 
 
     companyNews()
