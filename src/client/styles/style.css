@@ -19,9 +19,10 @@ footer {
     text-align: center;
 }
 
+/* News section */
 a {
     background-color: none;
-    text-decoration: none;
+    text-decoration: none !important;
     color: rgb(61, 62, 75);
 }
 
@@ -35,10 +36,6 @@ a {
     flex-direction: row;
 }
 
-a {
-    text-decoration: none !important;
-}
-
 .news-content {
     padding-left: 10px;
 }
@@ -50,6 +47,7 @@ img {
     border-radius: 10px;  
     object-fit: cover;
 }
+/* End of news section */
 
 /**** Buttons and Input ****/
 

@@ -39,7 +39,8 @@ app.get('/', (req, res) => {
 app.get('/news', (req, res) => { 
     // Store news data received from finnhub API in an array
     compNews = [[]];
-    for (i = 0; i < 10; i++) {
+     
+    for (i = 0; i < 200; i++) {
         compNews[0].push({});
     }
     console.log(compNews);
@@ -78,7 +79,6 @@ app.post('/news', (req, res) => {
     companyNews()
         .then(sendToClient);    
 });
-
 
 
 // Get stock data from the Finnnhub API based on user stock ticker input
@@ -134,7 +134,6 @@ app.post('/', (req, res) => {
             finnhubClient.stockCandles(stock_ticker, 'D', 1577836800, dateTimestamp , {}, (error, data, response) => {
                 res(finalResult.push(data.t, data.c)); 
             });
-            //1594339200
         });
         return promise;
     }; 
@@ -152,7 +151,6 @@ app.post('/', (req, res) => {
             finnhubClient.stockCandles(stock_ticker, 'W',1577836800, dateTimestamp , {}, (error, data, response) => {
                 res(finalResult.push(data.t, data.c)); 
             });
-            //1594339200
         });
         return promise;
     }; 
@@ -170,7 +168,6 @@ app.post('/', (req, res) => {
             finnhubClient.stockCandles(stock_ticker, 'M',1577836800, dateTimestamp , {}, (error, data, response) => {
                 res(finalResult.push(data.t, data.c)); 
             });
-            //1594339200
         });
         return promise;
     };  
@@ -228,10 +225,10 @@ app.post('/', (req, res) => {
         .then(stockCandlesDay) // day
         .then(stockCandlesWeek) // week
         .then(stockCandlesMonth) // month
-        .then(stockFinancials)
+        /* .then(stockFinancials)
         .then(stockRecommendation)
         .then(stockTechnical)
-        .then(stockEarnings)
+        .then(stockEarnings) */
         .then(sendToClient); 
 }); 
 

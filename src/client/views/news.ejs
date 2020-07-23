@@ -41,9 +41,8 @@
                     </form>
                 </div>
   
-                <h3>Current News</h3>
                 <div class="news-article">
-                    <% for (let a = 0; a < 10; a++ ) { %>
+                    <% for (let a = 0; a < 200; a++ ) { %>
                         <a href="<%= compNews[0][a].url %>">
                             <div class="news">
                                 <div>
@@ -51,7 +50,12 @@
                                 </div>
                                 <p>
                                     <div class="news-content">
-                                        <h5><%= compNews[0][a].datetime %></h5>
+                                        <!-- Converts timestring to date format -->
+                                        <% let dt = new Date(compNews[0][a].datetime * 1000) %>
+                                        <% let date = dt.toLocaleString("en-US", {timeZoneName: "short"}) %>
+                                        <% if (date.length > 13) { %>
+                                            <h5><%= date.slice(0, date.indexOf("G")) %></h5>
+                                        <% } %>
                                         <h4><%= compNews[0][a].headline %></h4>
                                         <%= compNews[0][a].summary %></br>
                                     </div>
@@ -65,7 +69,6 @@
         </div>
     </div> 
     
-    <!-- <script src="/client/js/script.js"></script>  -->
     <!-- Bootstrap -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
