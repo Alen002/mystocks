@@ -1,5 +1,6 @@
 require('dotenv').config();
 var path = require('path');
+const PORT = process.env.PORT || 5000
 const express = require('express');
 const morgan = require('morgan');
 const cors = require('cors');
@@ -20,7 +21,7 @@ app.set('views', path.join(__dirname, '/client/views'));
 
 app.use(cors());
 
-app.listen(5000, () => {
+app.listen(PORT, () => {
     console.log('Example app listening on port 5000!');
 });
 
