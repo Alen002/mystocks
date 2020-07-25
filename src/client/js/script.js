@@ -1,4 +1,3 @@
-console.log('js is working');
 // Update chart.js after everything has been loaded
 window.onload = () => {
     updateChartData(0, 1)
@@ -33,18 +32,15 @@ var chart = new Chart(ctx, {
             lineTension: 0
         }]
     },
-
     // Configuration options go here
     options: {maintainAspectRatio: true}
 });
 
 // Change chart data and timeframe when user clicks on day/week/month
-function updateChartData(indexLabels, indexData) {
+let updateChartData = (indexLabels, indexData) => {
     
     chart.data.labels = stockData[indexLabels];
-    chart.data.datasets[0].data = stockData[indexData];
-    
-    
+    chart.data.datasets[0].data = stockData[indexData];   
     chart.update();
 };
 

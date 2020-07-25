@@ -35,6 +35,7 @@ a {
     padding: 5px;
     flex-direction: row;
     margin-bottom: 10px;
+    border-bottom: solid 1px #B1ABB4;
 }
 
 .news-content {
