@@ -21,6 +21,7 @@ var chart = new Chart(ctx, {
             backgroundColor: 'rgb(255, 99, 132)',
             borderColor: 'rgb(0, 91, 182)',
             data: [],
+            pointRadius: 0.5,
             fill: false,
             lineTension: 0
         }]
