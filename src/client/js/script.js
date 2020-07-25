@@ -5,13 +5,6 @@ window.onload = () => {
     document.getElementsByClassName('hide')[1].style.visibility = "visible";    
 };
 
-// user selection of chart type is stored in chartStyle variable
-const chartType = () => {
-    let chartStyle = document.getElementById('chart-type').value;  
-    console.log(chartStyle);
-    return chartStyle;
-};
-
 var ctx = document.getElementById('myChart').getContext('2d');
 Chart.defaults.scale.gridLines.drawOnChartArea = false;
 

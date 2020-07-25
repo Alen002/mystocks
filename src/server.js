@@ -92,6 +92,7 @@ app.post('/', (req, res) => {
             //let timeframe = ['1', '5', '15', '30', '60', 'D', 'W', 'M'];
             finnhubClient.stockCandles(stock_ticker, 'D', 1577836800, dateTimestamp, {}, (error, data, response) => {
                 res(finalResult.push(data.t, data.c)); 
+                // date.t to receive timestamps and data.c for closing stock price
             });
         });
         return promise;
@@ -112,11 +113,19 @@ app.post('/', (req, res) => {
 
     // Stock price development at closing price over a timeframe MONTH
     let stockCandlesMonth = () => {
-        console.log(currentDate);
-        console.log(dateTimestamp);
+        
+        // calculate previous month date and convert it into a timestamp
+        let actualMonth = currentDate.getMonth();
+        if (actualMonth < 1) {
+            actualMonth += 1;
+        };
+        let previousMonth = actualMonth - 1;
+        let previousDate = currentDate.setMonth(previousMonth);
+        let lastMonthTimestamp = Math.trunc(previousDate/1000);
+
         let promise = new Promise((res, rej) => {
             //let timeframe = ['1', '5', '15', '30', '60', 'D', 'W', 'M'];
-            finnhubClient.stockCandles(stock_ticker, 'M',1577836800, dateTimestamp , {}, (error, data, response) => {
+            finnhubClient.stockCandles(stock_ticker, '60', lastMonthTimestamp, dateTimestamp , {}, (error, data, response) => {
                 res(finalResult.push(data.t, data.c)); 
             });
         });
@@ -182,3 +191,4 @@ app.post('/news', (req, res) => {
     companyNews()
         .then(sendToClient);    
 });
+
