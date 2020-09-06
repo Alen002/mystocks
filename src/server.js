@@ -4,6 +4,7 @@ const PORT = process.env.PORT || 5000
 const express = require('express');
 const morgan = require('morgan');
 const cors = require('cors');
+const expressSanitizer = require('express-sanitizer');
 const app = express();
 const finnhub = require('finnhub');
 
@@ -13,6 +14,7 @@ app.use(morgan('short'));
 const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ extended: false })); 
 app.use(bodyParser.json());
+app.use(expressSanitizer()); // for avoiding script injections
 
 // Static files path for css and js files
 app.use(express.static('src'));
