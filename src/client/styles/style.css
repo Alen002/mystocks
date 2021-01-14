@@ -58,21 +58,7 @@ img {
     width: 200px;
     height: 24px;
     font-size: 20px;
-}
-
-input:hover {
-    border: solid 1px;
-    border-color: #39A6FF;
-}
-
-.btn {
-    background-color: rgb(210, 224,246);
-    color: black;
-    border-color: white;
-}
-
-.btn:hover {
-    background-color: rgb(39, 118, 189);
+    
 }
 
 .hide {
@@ -97,7 +83,7 @@ canvas {
         width: 40%; /* for height see blog */
         
         object-fit: cover; /* crops the image */
-}
+    }
 }
 
  
