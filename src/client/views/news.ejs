@@ -2,16 +2,16 @@
     <%- include("./partials/header") %> 
 
     <!-- Stock data and Chart-->
-    <div class="container-fluid">
+    <div class="container-fluid viewp">
 
-        <div class="row"><!-- Start of row -->
+        <div class="row mt-2"><!-- Start of row -->
 
-            <div class="col-10 col-sm-12 col-xl-12">
+            <div class="col-10 col-12">
                 <!-- Input form to enter stock data -->
                 <div> 
                     <form id="user-input" method="POST" action="/news" class="form-inline">
-                        <input type="text" class="form-control mb-2" placeholder="Enter Ticker, eg. AAPL" name="stock_id">
-                        <button type="submit" class="btn btn-primary mb-2">Submit</button>
+                        <input type="text" class="form-control mb-2 mr-2" placeholder="Enter Ticker, eg. AAPL" name="stock_id">
+                        <button type="submit" class="btn btn-outline-primary mb-2">Submit</button>
                     </form>
                 </div>
   
@@ -41,6 +41,8 @@
 
             </div>                 
         </div>
+        <!-- Footer -->
+<%- include("./partials/footer") %>
     </div> 
-    <!-- Footer -->
-    <%- include("./partials/footer") %>
+
+

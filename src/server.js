@@ -122,7 +122,7 @@ app.post('/', (req, res) => {
         if (actualMonth < 1) {
             actualMonth += 1;
         };
-        let previousMonth = actualMonth - 1;
+        let previousMonth = actualMonth - 1;   // -1
         let previousDate = currentDate.setMonth(previousMonth);
         let lastMonthTimestamp = Math.trunc(previousDate/1000);
 
