@@ -1,17 +1,30 @@
-/* Remove border of navbar-toggler */
-  .navbar-toggler,
-  .navbar-toggler:focus,
-  .navbar-toggler:active,
-  .navbar-toggler-icon:focus {
-    outline: none;
-    border: none;
-    box-shadow: none;
+body {
+    min-height: 100vh;
+    position: relative;
+    margin: 0;
+    /* padding-bottom: 100px; */
+    box-sizing: border-box;
+}
+  
+footer {
+    position: absolute;
+    bottom: 0;
+    /* height: 90px; */
+    left: 0; 
+    right: 0; 
+    margin-left: auto; 
+    margin-right: auto; 
+    width: 100px;
 }
 
-footer {
-    background-color: #F9F9FA;
-    text-align: center;
-    position: absolute;
+/* Remove border of navbar-toggler */
+.navbar-toggler,
+.navbar-toggler:focus,
+.navbar-toggler:active,
+.navbar-toggler-icon:focus {
+  outline: none;
+  border: none;
+  box-shadow: none;
 }
 
 /* News section */
@@ -79,3 +92,5 @@ canvas {
         object-fit: cover; /* crops the image */
     }
 }
+
+

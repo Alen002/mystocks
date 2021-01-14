@@ -3,7 +3,7 @@
 
     <!-- Stock data and chart -->
     <div class="container-fluid">
-        <div class="row mt-4">
+        <div class="row mt-2">
             <!-- Start of stock information -->
             <div class="col col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12">
 
@@ -18,7 +18,8 @@
                 <!-- Display of stock information -->
                 <div id="label" class="hide">
                     <p>
-                        <h2><%= finalResult[0].name %> (<%= finalResult[0].ticker %>)</h2>
+                        <h2><%= finalResult[0].name %></h2>
+                        <h4>(<%= finalResult[0].ticker %>)</h4>
                         Currency in <%= finalResult[0].currency %>
                         <h2><%= finalResult[1].c %></h2>
                         <p><%= (finalResult[1].c - finalResult[1].pc).toFixed(2) %>  (<%=((finalResult[1].c/finalResult[1].pc - 1)*100).toFixed(2)%>%)</p>
