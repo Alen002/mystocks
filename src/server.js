@@ -126,9 +126,16 @@ app.post('/', (req, res) => {
         let previousDate = currentDate.setMonth(previousMonth);
         let lastMonthTimestamp = Math.trunc(previousDate/1000);
 
+        let checkDate;
+        if(previousMonth == 0) {
+            checkDate = 1577836800;
+        } else {
+            checkDate = lastMonthTimestamp; 
+        }
+
         let promise = new Promise((res, rej) => {
             //let timeframe = ['1', '5', '15', '30', '60', 'D', 'W', 'M'];
-            finnhubClient.stockCandles(stock_ticker, '60', lastMonthTimestamp, dateTimestamp , {}, (error, data, response) => {
+            finnhubClient.stockCandles(stock_ticker, '60', checkDate , dateTimestamp , {}, (error, data, response) => {
                 res(finalResult.push(data.t, data.c)); 
             });
         });
