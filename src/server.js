@@ -122,10 +122,18 @@ app.post('/', (req, res) => {
         if (actualMonth < 1) {
             actualMonth += 1;
         };
-        let previousMonth = actualMonth - 1;
-        let previousDate = currentDate.setMonth(previousMonth);
-        let lastMonthTimestamp = Math.trunc(previousDate/1000);
 
+        let previousMonth = actualMonth - 1;
+        let lastMonthTimestamp = 0;
+
+        if(previousMonth < 1) {
+            lastMonthTimestamp = 1609455600;
+        } else {
+            let previousDate = currentDate.setMonth(previousMonth);
+            lastMonthTimestamp = Math.trunc(previousDate/1000);
+        }
+
+        //1609455600
         let promise = new Promise((res, rej) => {
             //let timeframe = ['1', '5', '15', '30', '60', 'D', 'W', 'M'];
             finnhubClient.stockCandles(stock_ticker, '60', lastMonthTimestamp, dateTimestamp , {}, (error, data, response) => {
