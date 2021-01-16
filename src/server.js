@@ -29,7 +29,7 @@ app.listen(PORT, () => {
 
 /* Global Variables - Finnhub API */
 const api_key = finnhub.ApiClient.instance.authentications['api_key'];
-api_key.apiKey = process.env.API; 
+api_key.apiKey = "bt0pe9v48v6ptb8sk8a0";
 const finnhubClient = new finnhub.DefaultApi();
 
 /**** START OF ROUTES *****/
@@ -122,20 +122,13 @@ app.post('/', (req, res) => {
         if (actualMonth < 1) {
             actualMonth += 1;
         };
-        let previousMonth = actualMonth - 1;   // -1
+        let previousMonth = actualMonth - 1;
         let previousDate = currentDate.setMonth(previousMonth);
         let lastMonthTimestamp = Math.trunc(previousDate/1000);
 
-        let checkDate;
-        if(previousMonth == 0) {
-            checkDate = 1577836800;
-        } else {
-            checkDate = lastMonthTimestamp; 
-        }
-
         let promise = new Promise((res, rej) => {
             //let timeframe = ['1', '5', '15', '30', '60', 'D', 'W', 'M'];
-            finnhubClient.stockCandles(stock_ticker, '60', checkDate , dateTimestamp , {}, (error, data, response) => {
+            finnhubClient.stockCandles(stock_ticker, '60', lastMonthTimestamp, dateTimestamp , {}, (error, data, response) => {
                 res(finalResult.push(data.t, data.c)); 
             });
         });
@@ -201,4 +194,3 @@ app.post('/news', (req, res) => {
     companyNews()
         .then(sendToClient);    
 });
-
